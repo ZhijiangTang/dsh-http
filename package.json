@@ -28,5 +28,43 @@
     "bundle": {
       "patch": "./cordis.patch.yml"
     }
+  },
+  "dshWorkshop": {
+    "schema": "omdsh-workshop-package/v1",
+    "type": "plugin",
+    "integration": {
+      "protocol": "harness-profile",
+      "artifact": "cordis.patch.yml"
+    },
+    "install": {
+      "mode": "transactional",
+      "adapter": "profile-bundle",
+      "failurePolicy": "generation-rollback",
+      "touchesCurrentBeforeActivation": false
+    },
+    "lifecycle": {
+      "activation": "restart-profile",
+      "dispose": "supported"
+    },
+    "permissions": [
+      "network:outbound"
+    ],
+    "compatibility": {
+      "dshVersions": [
+        "0.1.0-rc.6"
+      ]
+    },
+    "capability": {
+      "id": "http-request-tool",
+      "kind": "tool",
+      "invocation": "call http_request with GET https://httpbin.org/anything?probe=1",
+      "expected": "returns ok=true with status 200 plus durationMs/sizeBytes; a non-resolvable domain returns ok=false with error.stage=request"
+    },
+    "evidence": {
+      "install": "docs/WORKSHOP.md",
+      "failureIsolation": "docs/WORKSHOP.md",
+      "hotReload": null,
+      "remove": "docs/WORKSHOP.md"
+    }
   }
 }
