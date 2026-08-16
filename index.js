@@ -253,7 +253,7 @@ export function apply(ctx) {
     },
   }))
 
-  void selfTest(ctx)
+  if (process.env.DSH_PLUGIN_SELFTEST === '1') void selfTest(ctx)
 }
 
 // Self-test on mount: drive one success call through the real execution pipeline

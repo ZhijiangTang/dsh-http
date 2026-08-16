@@ -1,6 +1,6 @@
 {
   "name": "dsh-http",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DSH plugin: structured HTTP request tool (http_request) built on the Node built-in fetch.",
   "type": "module",
   "main": "index.js",
